@@ -3,6 +3,21 @@ let bird = document.querySelector('.bird');
 let img = document.getElementById('bird-1');
 let sound_point = new Audio('sounds effect/point.wav');
 let sound_die = new Audio('sounds effect/die.mp3');
+let bg_music = new Audio('sounds effect/background music.mp3');
+bg_music.loop = true;
+bg_music.volume = 0.22;
+window.addEventListener('load', function() {
+    bg_music.play().catch(() => {
+      // Some browsers require interaction before play, retry on first click
+      const enableMusic = () => {
+        bg_music.play();
+        window.removeEventListener('click', enableMusic);
+        window.removeEventListener('keydown', enableMusic);
+      };
+      window.addEventListener('click', enableMusic);
+      window.addEventListener('keydown', enableMusic);
+    });
+});
 
 // getting bird element properties
 let bird_props = bird.getBoundingClientRect();
@@ -49,7 +64,7 @@ function play(){
             }else{
                 if(bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top){
                     game_state = 'End';
-                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Restart';
+                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Replay';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();
