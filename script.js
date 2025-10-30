@@ -37,6 +37,7 @@ let score_title = document.querySelector('.score_title');
 let game_state = 'Start';
 img.style.display = 'none'; // Hide bird at intro
 message.classList.add('messageStyle'); // Show intro message
+message.style.display = 'block'; // Show card at intro
 
 document.addEventListener('keydown', (e) => {
     // Start game on Enter when in Start/End
@@ -47,7 +48,7 @@ document.addEventListener('keydown', (e) => {
         img.style.display = 'block'; // Show bird image
         bird.style.top = '40vh';
         game_state = 'Play';
-        message.innerHTML = '';
+        message.style.display = 'none'; // HIDE message card during play
         score_title.innerHTML = 'Score : ';
         score_val.innerHTML = '0';
         message.classList.remove('messageStyle');
@@ -72,10 +73,11 @@ function play(){
                 // If the bird hits a pipe
                 if(bird_props.left < pipe_sprite_props.left + pipe_sprite_props.width && bird_props.left + bird_props.width > pipe_sprite_props.left && bird_props.top < pipe_sprite_props.top + pipe_sprite_props.height && bird_props.top + bird_props.height > pipe_sprite_props.top){
                     game_state = 'End';
-                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press Enter To Replay';
+                    message.innerHTML = 'Game Over'.fontcolor('red') + '<br>Press ENTER To Replay';
                     message.classList.add('messageStyle');
                     img.style.display = 'none';
                     sound_die.play();
+                    message.style.display = 'block'; // SHOW message card on game over
                     return;
                 }else{
                     // If pipe passes bird safely, increment score
@@ -116,6 +118,7 @@ function play(){
             message.style.left = '28vw';
             window.location.reload();
             message.classList.remove('messageStyle');
+            message.style.display = 'block'; // Show message card again if needed
             return;
         }
         // Move bird by physics

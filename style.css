@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+
 * {
 	margin: 0;
 	padding: 0;
@@ -31,20 +33,38 @@
 	border: 5px solid black;
 }
 .message {
-	position: absolute;
-	z-index: 10;
-	color: black;
-	top: 30%;
-	left: 50%;
-	font-size: 4em;
-	transform: translate(-50%, -50%);
-	text-align: center;
+    position: fixed;
+    z-index: 10;
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    font-size: 2.5em;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-family: 'Baloo 2', 'Comic Sans MS', cursive, sans-serif;
+    padding: 24px 36px 30px 36px;
+    background: linear-gradient(135deg, #ffe7fb 0%, #a0ebff 100%);
+    border-radius: 30px;
+    box-shadow: 0 8px 32px #70bff633, 0 2px 12px #eeb4ff55;
+    border: 2.5px solid #a6dbfa;
+    text-shadow: 1px 3px 6px #c2b7ff5c, 0 1px 0px #54a3fdbb;
+    letter-spacing: 0.03em;
+    transition: box-shadow 0.2s, transform 0.12s, background 0.2s;
+    filter: drop-shadow(0 4px 8px #e2f0ffd5);
+    opacity: 0.98;
 }
-.messageStyle{
-	background: white;
-	padding: 30px;
-	box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-	border-radius: 5%;
+.messageStyle {
+    background: linear-gradient(137deg, #fffcef 70%, #fee6fb 100%);
+    color: #168cc3;
+    font-size: 2.7em;
+    box-shadow: 0 10px 36px #e0cbff55, 0 6px 18px #f4a0a780;
+    border: 2.5px solid #e7bcf7;
+    outline: none;
+    font-family: 'Baloo 2', 'Comic Sans MS', cursive, sans-serif;
+    font-weight: 600;
+    padding: 32px 44px 34px 44px;
+    border-radius: 36px;
+    text-shadow: 2px 2px 12px #fff9, 0 1px #f8c0f7b0;
 }
 .score {
 	position: fixed;
